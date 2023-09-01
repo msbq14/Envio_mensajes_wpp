@@ -19,15 +19,15 @@
      <rect>
       <x>-40</x>
       <y>0</y>
-      <width>1441</width>
-      <height>891</height>
+      <width>1491</width>
+      <height>881</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>fondo_opaco.jpeg</pixmap>
+     <pixmap>../imagenes/fondo_opaco.jpg</pixmap>
     </property>
    </widget>
    <widget class="QPushButton" name="btnSeleccionarArchivo">
@@ -42,12 +42,39 @@
     <property name="palette">
      <palette>
       <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
        <colorrole role="Button">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
           <red>20</red>
           <green>180</green>
           <blue>183</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
@@ -66,17 +93,53 @@
           <red>20</red>
           <green>180</green>
           <blue>183</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="128">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
       </active>
       <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
        <colorrole role="Button">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
           <red>20</red>
           <green>180</green>
           <blue>183</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
@@ -95,17 +158,53 @@
           <red>20</red>
           <green>180</green>
           <blue>183</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="128">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
       </inactive>
       <disabled>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
        <colorrole role="Button">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
           <red>20</red>
           <green>180</green>
           <blue>183</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
@@ -124,6 +223,15 @@
           <red>20</red>
           <green>180</green>
           <blue>183</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="128">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
@@ -137,7 +245,16 @@
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(20, 180, 183);
-border-color: rgb(20, 180, 183);</string>
+border-color: rgb(20, 180, 183);
+
+color: rgb(255,255,255);
+
+hover{
+	 background-color: #2980b9;
+	 color: #fff;
+	 transform:scale(1.2);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}</string>
     </property>
     <property name="text">
      <string>Seleccionar archivo</string>
@@ -175,7 +292,7 @@ border-color: rgb(20, 180, 183);</string>
       <x>50</x>
       <y>310</y>
       <width>241</width>
-      <height>521</height>
+      <height>471</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -230,7 +347,7 @@ border-color: rgb(20, 180, 183);</string>
       <x>320</x>
       <y>320</y>
       <width>741</width>
-      <height>511</height>
+      <height>431</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -239,9 +356,12 @@ border-color: rgb(20, 180, 183);</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btnSeleccionarImagen">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>1120</x>
+      <x>1160</x>
       <y>170</y>
       <width>251</width>
       <height>71</height>
@@ -250,12 +370,39 @@ border-color: rgb(20, 180, 183);</string>
     <property name="palette">
      <palette>
       <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
        <colorrole role="Button">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
           <red>20</red>
           <green>180</green>
           <blue>183</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
@@ -274,17 +421,53 @@ border-color: rgb(20, 180, 183);</string>
           <red>20</red>
           <green>180</green>
           <blue>183</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="128">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
       </active>
       <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
        <colorrole role="Button">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
           <red>20</red>
           <green>180</green>
           <blue>183</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
@@ -303,17 +486,53 @@ border-color: rgb(20, 180, 183);</string>
           <red>20</red>
           <green>180</green>
           <blue>183</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="128">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
       </inactive>
       <disabled>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
        <colorrole role="Button">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
           <red>20</red>
           <green>180</green>
           <blue>183</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
@@ -332,6 +551,15 @@ border-color: rgb(20, 180, 183);</string>
           <red>20</red>
           <green>180</green>
           <blue>183</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="128">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
@@ -344,8 +572,17 @@ border-color: rgb(20, 180, 183);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(20, 180, 183);
-border-color: rgb(20, 180, 183);</string>
+     <string notr="true">
+ background-color: rgb(20, 180, 183);
+ border-color: rgb(20, 180, 183);
+ color: rgb(255,255,255);
+hover{
+	 background-color: #2980b9;
+	 color: #fff;
+	 transform:scale(1.2);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+</string>
     </property>
     <property name="text">
      <string>Seleccionar imagen</string>
@@ -354,8 +591,8 @@ border-color: rgb(20, 180, 183);</string>
    <widget class="QPushButton" name="btnEnviarMensaje">
     <property name="geometry">
      <rect>
-      <x>1130</x>
-      <y>770</y>
+      <x>1160</x>
+      <y>680</y>
       <width>251</width>
       <height>71</height>
      </rect>
@@ -363,12 +600,39 @@ border-color: rgb(20, 180, 183);</string>
     <property name="palette">
      <palette>
       <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
        <colorrole role="Button">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
           <red>20</red>
           <green>180</green>
           <blue>183</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
@@ -387,17 +651,53 @@ border-color: rgb(20, 180, 183);</string>
           <red>20</red>
           <green>180</green>
           <blue>183</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="128">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
       </active>
       <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
        <colorrole role="Button">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
           <red>20</red>
           <green>180</green>
           <blue>183</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
@@ -416,17 +716,53 @@ border-color: rgb(20, 180, 183);</string>
           <red>20</red>
           <green>180</green>
           <blue>183</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="128">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
       </inactive>
       <disabled>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
        <colorrole role="Button">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
           <red>20</red>
           <green>180</green>
           <blue>183</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
@@ -445,6 +781,15 @@ border-color: rgb(20, 180, 183);</string>
           <red>20</red>
           <green>180</green>
           <blue>183</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="128">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
          </color>
         </brush>
        </colorrole>
@@ -458,7 +803,15 @@ border-color: rgb(20, 180, 183);</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(20, 180, 183);
-border-color: rgb(20, 180, 183);</string>
+border-color: rgb(20, 180, 183);
+color: rgb(255,255,255);
+
+hover{
+	 background-color: #2980b9;
+	 color: #fff;
+	 transform:scale(1.2);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}</string>
     </property>
     <property name="text">
      <string>Enviar mensaje</string>
@@ -467,10 +820,10 @@ border-color: rgb(20, 180, 183);</string>
    <widget class="QLabel" name="lblImagen">
     <property name="geometry">
      <rect>
-      <x>1130</x>
-      <y>350</y>
+      <x>1160</x>
+      <y>349</y>
       <width>251</width>
-      <height>331</height>
+      <height>291</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -483,7 +836,7 @@ border-color: rgb(20, 180, 183);</string>
    <widget class="QLabel" name="lblVistaPrevia">
     <property name="geometry">
      <rect>
-      <x>1200</x>
+      <x>1230</x>
       <y>320</y>
       <width>291</width>
       <height>21</height>
@@ -499,8 +852,8 @@ border-color: rgb(20, 180, 183);</string>
    <widget class="QLabel" name="lblMensajeAEnviar">
     <property name="geometry">
      <rect>
-      <x>1130</x>
-      <y>690</y>
+      <x>1160</x>
+      <y>640</y>
       <width>251</width>
       <height>21</height>
      </rect>
@@ -528,15 +881,15 @@ border-color: rgb(20, 180, 183);</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>logo.png</pixmap>
+     <pixmap>../imagenes/logo.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>-320</x>
       <y>0</y>
-      <width>561</width>
+      <width>881</width>
       <height>81</height>
      </rect>
     </property>
@@ -552,7 +905,7 @@ border-color: rgb(20, 180, 183);</string>
      <rect>
       <x>840</x>
       <y>0</y>
-      <width>561</width>
+      <width>711</width>
       <height>81</height>
      </rect>
     </property>
@@ -561,6 +914,19 @@ border-color: rgb(20, 180, 183);</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox">
+    <property name="geometry">
+     <rect>
+      <x>1160</x>
+      <y>130</y>
+      <width>161</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Agregar imagen</string>
     </property>
    </widget>
   </widget>
