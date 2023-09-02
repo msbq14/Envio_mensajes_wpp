@@ -18,7 +18,7 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(-40, 0, 1491, 881))
         self.label.setText("")
-        #self.label.setPixmap(QtGui.QPixmap("imagenes/fondo_opaco.jpg"))
+        self.label.setPixmap(QtGui.QPixmap("../imagenes/fondo_opaco.jpg"))
         self.label.setObjectName("label")
         self.btnSeleccionarArchivo = QtWidgets.QPushButton(self.centralwidget)
         self.btnSeleccionarArchivo.setGeometry(QtCore.QRect(40, 170, 251, 71))
@@ -108,10 +108,6 @@ class Ui_MainWindow(object):
         self.lblIndicacion2 = QtWidgets.QLabel(self.centralwidget)
         self.lblIndicacion2.setGeometry(QtCore.QRect(50, 280, 261, 21))
         self.lblIndicacion2.setObjectName("lblIndicacion2")
-        self.listEncabezados = QtWidgets.QListView(self.centralwidget)
-        self.listEncabezados.setGeometry(QtCore.QRect(50, 310, 241, 471))
-        self.listEncabezados.setStyleSheet("background-color: rgb(20, 180, 183);")
-        self.listEncabezados.setObjectName("listEncabezados")
         self.txtAreaMensaje = QtWidgets.QTextEdit(self.centralwidget)
         self.txtAreaMensaje.setGeometry(QtCore.QRect(320, 170, 721, 71))
         self.txtAreaMensaje.setObjectName("txtAreaMensaje")
@@ -309,7 +305,7 @@ class Ui_MainWindow(object):
         self.lblLogoEmpresa.setGeometry(QtCore.QRect(560, 0, 281, 81))
         self.lblLogoEmpresa.setStyleSheet("background-color: rgb(20, 180, 183);")
         self.lblLogoEmpresa.setText("")
-        self.lblLogoEmpresa.setPixmap(QtGui.QPixmap("imagenes/logo.png"))
+        self.lblLogoEmpresa.setPixmap(QtGui.QPixmap("../imagenes/logo.png"))
         self.lblLogoEmpresa.setObjectName("lblLogoEmpresa")
         self.label_9 = QtWidgets.QLabel(self.centralwidget)
         self.label_9.setGeometry(QtCore.QRect(-320, 0, 881, 81))
@@ -322,8 +318,13 @@ class Ui_MainWindow(object):
         self.label_10.setText("")
         self.label_10.setObjectName("label_10")
         self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox.setGeometry(QtCore.QRect(1160, 130, 161, 21))
+        self.checkBox.setGeometry(QtCore.QRect(1170, 140, 161, 21))
         self.checkBox.setObjectName("checkBox")
+        self.listWidget = QtWidgets.QListWidget(self.centralwidget)
+        self.listWidget.setGeometry(QtCore.QRect(40, 320, 256, 431))
+        self.listWidget.setStyleSheet("background-color: rgb(20, 180, 183);\n"
+"color: white;")
+        self.listWidget.setObjectName("listWidget")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -346,6 +347,7 @@ class Ui_MainWindow(object):
         self.lblMensajeAEnviar.setText(_translate("MainWindow", "Mensaje que se va a enviar"))
         self.checkBox.setText(_translate("MainWindow", "Agregar imagen"))
 
+
 class Ventana(QtWidgets.QMainWindow):
     def __init__(self):
         QtWidgets.QMainWindow.__init__(self)
@@ -354,6 +356,7 @@ class Ventana(QtWidgets.QMainWindow):
         self.setWindowTitle("Enviar mensajes whatsapp")
         self.setWindowIcon(QIcon("imagenes/iconoapp.png"))
         self.showMaximized()
+
 
 if __name__ == "__main__":
     import sys
