@@ -22,20 +22,19 @@ class Mensajes():
         except Exception as e:
             print("error al leer el archivo:", str(e))
 
-    def obtenerElementosDadasLasCabeceras(self, cabecera1, cabecera2, archivo):
-        nombres=self.df[self.df[cabecera1]]
+    def obtenerElementosDadasLasCabeceras(self, cabecera1, cabecera2):
+        nombres=self.df[cabecera1]
         print(nombres)
-        telefonos=self.df[self.df[cabecera2]]
+        telefonos=self.df[cabecera2]
         print(telefonos)
+        data_filtrado=self.df.dropna(subset=[cabecera2]).copy() #filtra telefonos vacios con nombres correspondientes
+        data_filtrado = data_filtrado[data_filtrado[cabecera2].str.startswith('09')==True].reset_index()
+
+        nombres_y_telefonos = data_filtrado[[cabecera1, cabecera2]]
+        lista_de_listas = nombres_y_telefonos.values.tolist()
+        return lista_de_listas
 
 
-
-#df = pd.read_excel('C:/Users/mari1/Escritorio/pasantias-NewBest/empresas.xlsx')
-#df = df[df['telefonosEmpresa'].str.startswith('09') == True].reset_index()
-#df = df['telefonosEmpresa']                                                           
-#df 
-
-mensaje = "Recuerdas quién nos puso una cárcel de máxima seguridad en Cuenca? https://vm.tiktok.com/ZM2EVhEnp/"
-
-#for i in df: 
-#    pywhatkit.sendwhatmsg_instantly('+593'+str(i),mensaje, 15, True )
+    def mandarMensaje(self, numeros_telefonicos,mensaje):
+        for numero in numeros_telefonicos:
+            pywhatkit.sendwhatmsg_instantly('+593'+str(numero),mensaje, 15, True )

@@ -27,6 +27,7 @@ class Controlador(QWidget):
         self.vista.ui.checkBox.stateChanged.connect(self.checkbox_cambiado)
         self.vista.ui.tblNombreTelefono.setModel(None)
         self.vista.ui.listEncabezados.itemClicked.connect(self.limitar_seleccion_lista)
+        self.vista.ui.btnEnviarMensaje.clicked.connect(self.enviarMensaje)
         self.setModeloTabla()
         
 
@@ -69,11 +70,13 @@ class Controlador(QWidget):
 
     def seleccionarArchivo(self):
 
-        
+        self.vista.ui.listEncabezados.clear()
+        self.tabla.setRowCount(0)
         archivo, ok = QFileDialog.getOpenFileName(self, "Seleccionar archivo", r"<Default dir>", "Archivos excel (*.xlsx *.csv)")
         if ok:
             encabezados=self.modelo.obtenerCabeceras(archivo)
             self.setModeloLista(encabezados)
+            self.setModeloTabla()
 
     def limitar_seleccion_lista(self):
         
@@ -81,6 +84,10 @@ class Controlador(QWidget):
         longitud = len(self.vista.ui.listEncabezados.selectedItems())
         if longitud > 2:
             lista_items[longitud - 1].setSelected(False)
+        elif longitud ==2:
+            lista_textos = [item.text() for item in lista_items] #convierte el lista_items que es de tipo QListWidgetItem a list
+            datos=self.modelo.obtenerElementosDadasLasCabeceras(lista_textos[0],lista_textos[1])
+            self.llenarTabla(datos)
 
 
     def setModeloTabla(self):
@@ -132,5 +139,51 @@ class Controlador(QWidget):
         self.vista.ui.listEncabezados.setStyleSheet(style_sheet)
     
 
+    def llenarTabla(self, data):
+        
+
+        for i in range(len(data)):
+            for j in range(len(data[i])):
+                self.tabla.setItem(i,j,QStandardItem(str(data[i][j])))
+
+
+    def enviarMensaje(self):
+        #mostrar la vista previa en otra ventana puede ser mejor idea 
+        mensaje = "¿Está seguro de que desea el mensaje a los numeros telefonicos que aparecen en la tabla?"
+        respuesta = QMessageBox.question(self, "Confirmacion", mensaje, QMessageBox.StandardButton.Yes, QMessageBox.StandardButton.No)
+        print(respuesta)
+        if respuesta=="16384":
+            print("no hay problema con la confirmacion")
+        if self.vista.ui.txtAreaMensaje.toPlainText().strip():
+            print("No hay problema con comprobar mensaje vacio")
+        if( self.verificarTablaNoVacia==True):
+            print("No hay problema con comprobar tabla vacia")
+
+
+        if self.vista.ui.txtAreaMensaje.toPlainText().strip() and QMessageBox.StandardButton.Yes==True:
+            self.modelo.mandarMensaje(self.obtenerSegundaColumna(),self.vista.ui.txtAreaMensaje.toPlainText())
+
+        else:
+            QMessageBox.information(self,"Aviso", "No se enviaron los mensajes")
+
+    def obtenerSegundaColumna(self):
+        segunda_columna = []
+        for fila in range(self.tabla.rowCount()):
+            item = self.tabla.item(fila, 1)  # 1 representa la segunda columna
+            if item:
+                segunda_columna.append(item.text())
+
+        return segunda_columna
+    
+
+    def verificarTablaNoVacia(self):
+        for fila in range(self.tabla.rowCount()):
+            for columna in range(self.tabla.columnCount()):
+                item = self.tabla.item(fila, columna)
+                if item and not item.text().strip() == "":
+                    return True 
+                
+        
+        return False
 
         
