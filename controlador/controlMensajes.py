@@ -26,19 +26,11 @@ class Controlador(QWidget):
         self.vista.ui.btnSeleccionarImagen.setEnabled(False)
         self.vista.ui.checkBox.stateChanged.connect(self.checkbox_cambiado)
         self.vista.ui.tblNombreTelefono.setModel(None)
-        self.vista.ui.listEncabezados.itemClicked.connect(self.limitar_seleccion)
+        self.vista.ui.listEncabezados.itemClicked.connect(self.limitar_seleccion_lista)
         self.setModeloTabla()
-        # self.setModeloLista()
+        
 
-        
-    def limitar_seleccion(self):
-        for i in self.vista.ui.listEncabezados.selectedItems():
-            print(i.text())
-        lista_items = self.vista.ui.listEncabezados.selectedItems()
-        longitud = len(self.vista.ui.listEncabezados.selectedItems())
-        
-        if longitud > 2:
-            lista_items[longitud - 1].setSelected(False)
+            
     def checkbox_cambiado(self, estado):
         if estado ==2:
             self.vista.ui.btnSeleccionarImagen.setEnabled(True)
@@ -83,19 +75,12 @@ class Controlador(QWidget):
             encabezados=self.modelo.obtenerCabeceras(archivo)
             self.setModeloLista(encabezados)
 
-            #self.vista.ui.listEncabezados.selectionModel().selectionChanged.connect(self.controlarSeleccion)
-            #self.modelo.obtenerElementosDadasLasCabeceras()
-
-
-    def controlarSeleccion(self, seleccion):
-        seleccionados=seleccion.indexes()
-        print(str(seleccionados))
-        if len(seleccionados)>2:
-
-            QMessageBox.warning(self, "Advertencia", "Solo se pueden seleccionar 2 elementos.")
-            # Deseleccionar todos los elementos
-            for idx in seleccionados:
-                self.vista.ui.listEncabezados.selectionModel().select(idx, Qt.ItemSelectionModel.Deselect)
+    def limitar_seleccion_lista(self):
+        
+        lista_items = self.vista.ui.listEncabezados.selectedItems()
+        longitud = len(self.vista.ui.listEncabezados.selectedItems())
+        if longitud > 2:
+            lista_items[longitud - 1].setSelected(False)
 
 
     def setModeloTabla(self):
