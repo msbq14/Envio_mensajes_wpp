@@ -152,7 +152,7 @@ class Controlador(QWidget):
         mensaje = "¿Está seguro de que desea el mensaje a los numeros telefonicos que aparecen en la tabla?"
         respuesta = QMessageBox.question(self, "Confirmacion", mensaje, QMessageBox.StandardButton.Yes, QMessageBox.StandardButton.No)
         print(respuesta)
-        if respuesta=="16384":
+        if respuesta==16384:
             print("no hay problema con la confirmacion")
         if self.vista.ui.txtAreaMensaje.toPlainText().strip():
             print("No hay problema con comprobar mensaje vacio")
@@ -160,7 +160,7 @@ class Controlador(QWidget):
             print("No hay problema con comprobar tabla vacia")
 
 
-        if self.vista.ui.txtAreaMensaje.toPlainText().strip() and QMessageBox.StandardButton.Yes==True:
+        if self.vista.ui.txtAreaMensaje.toPlainText().strip() and respuesta == 16384:
             self.modelo.mandarMensaje(self.obtenerSegundaColumna(),self.vista.ui.txtAreaMensaje.toPlainText())
 
         else:
