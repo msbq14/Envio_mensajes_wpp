@@ -320,11 +320,11 @@ class Ui_MainWindow(object):
         self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
         self.checkBox.setGeometry(QtCore.QRect(1170, 140, 161, 21))
         self.checkBox.setObjectName("checkBox")
-        self.listWidget = QtWidgets.QListWidget(self.centralwidget)
-        self.listWidget.setGeometry(QtCore.QRect(40, 320, 256, 431))
-        self.listWidget.setStyleSheet("background-color: rgb(20, 180, 183);\n"
+        self.listEncabezados = QtWidgets.QListWidget(self.centralwidget)
+        self.listEncabezados.setGeometry(QtCore.QRect(40, 320, 256, 431))
+        self.listEncabezados.setStyleSheet("background-color: rgb(20, 180, 183);\n"
 "color: white;")
-        self.listWidget.setObjectName("listWidget")
+        self.listEncabezados.setObjectName("listEncabezados")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")

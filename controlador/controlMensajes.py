@@ -1,7 +1,7 @@
 import sys
 import os
 import tkinter as tk
-from PyQt6.QtWidgets import QWidget, QFileDialog, QApplication, QMessageBox, QListView
+from PyQt6.QtWidgets import QWidget, QFileDialog, QApplication, QMessageBox, QListView, QAbstractItemView
 from PyQt6 import QtWidgets, QtGui, QtCore
 from PyQt6.QtGui import QStandardItemModel, QStandardItem, QScreen, QPixmap
 from PyQt6.QtCore import Qt
@@ -26,10 +26,19 @@ class Controlador(QWidget):
         self.vista.ui.btnSeleccionarImagen.setEnabled(False)
         self.vista.ui.checkBox.stateChanged.connect(self.checkbox_cambiado)
         self.vista.ui.tblNombreTelefono.setModel(None)
+        self.vista.ui.listEncabezados.itemClicked.connect(self.limitar_seleccion)
         self.setModeloTabla()
-        self.setModeloLista()
+        # self.setModeloLista()
 
         
+    def limitar_seleccion(self):
+        for i in self.vista.ui.listEncabezados.selectedItems():
+            print(i.text())
+        lista_items = self.vista.ui.listEncabezados.selectedItems()
+        longitud = len(self.vista.ui.listEncabezados.selectedItems())
+        
+        if longitud > 2:
+            lista_items[longitud - 1].setSelected(False)
     def checkbox_cambiado(self, estado):
         if estado ==2:
             self.vista.ui.btnSeleccionarImagen.setEnabled(True)
@@ -72,9 +81,7 @@ class Controlador(QWidget):
         archivo, ok = QFileDialog.getOpenFileName(self, "Seleccionar archivo", r"<Default dir>", "Archivos excel (*.xlsx *.csv)")
         if ok:
             encabezados=self.modelo.obtenerCabeceras(archivo)
-            for encabezado in encabezados:
-                item = QStandardItem(str(encabezado))
-                self.modeloLista.appendRow(item)
+            self.setModeloLista(encabezados)
 
             #self.vista.ui.listEncabezados.selectionModel().selectionChanged.connect(self.controlarSeleccion)
             #self.modelo.obtenerElementosDadasLasCabeceras()
@@ -123,13 +130,12 @@ class Controlador(QWidget):
 
         self.vista.ui.tblNombreTelefono.setStyleSheet(style_sheet)
         
-    def setModeloLista(self):
-        self.modeloLista=QStandardItemModel()
+    def setModeloLista(self, encabezados):
         
-        self.vista.ui.listEncabezados.setSelectionMode(QListView.SelectionMode.MultiSelection)
+        self.vista.ui.listEncabezados.setSelectionMode(QAbstractItemView.SelectionMode.MultiSelection)
 
-        self.vista.ui.listEncabezados.setModel(self.modeloLista)
-
+        for i in encabezados:
+            self.vista.ui.listEncabezados.addItem(i)
 
 
         # Establecer hoja de estilo para cambiar el color de texto a blanco
