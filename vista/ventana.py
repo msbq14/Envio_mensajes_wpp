@@ -358,7 +358,7 @@ class Ventana(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         self.setWindowTitle("Enviar mensajes whatsapp")
         self.setWindowIcon(QIcon("./imagenes/iconoapp.png"))
-        self.showMaximized()
+        self.show()
 
 if __name__ == "__main__":
     import sys

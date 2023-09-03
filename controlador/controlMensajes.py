@@ -17,6 +17,7 @@ class Controlador(QWidget):
         # instancio la ventana
         self.app = QtWidgets.QApplication(sys.argv)
         self.vista = Ventana()
+        self.centrarVentana()
         self.tabla=None
         
         #----------------------
@@ -33,6 +34,20 @@ class Controlador(QWidget):
         self.vista.ui.txtAreaMensaje.mousePressEvent=self.mouse_clic
         self.setModeloTabla()
         
+
+    def centrarVentana(self):
+        # obtener la geometría de la pantalla
+        screen_geometry = QApplication.primaryScreen().geometry()
+
+        # obtener el tamaño de la ventana
+        window_size = self.vista.geometry()
+
+        # calcular la posición central de la ventana
+        x = int((screen_geometry.width() - window_size.width()) / 2)
+        y = int((screen_geometry.height() - window_size.height()) / 2)
+
+        # mover la ventana a la posición central
+        self.vista.move(x, y)
 
     def mouse_clic(self, event:QMouseEvent):
         if event.button()==Qt.MouseButton.LeftButton:
