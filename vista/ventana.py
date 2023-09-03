@@ -20,7 +20,7 @@ class Ui_MainWindow(object):
         self.lblLogoEmpresa.setGeometry(QtCore.QRect(560, 0, 281, 81))
         self.lblLogoEmpresa.setStyleSheet("background-color: rgb(20, 180, 183);")
         self.lblLogoEmpresa.setText("")
-        self.lblLogoEmpresa.setPixmap(QtGui.QPixmap("../imagenes/logo.png"))
+        self.lblLogoEmpresa.setPixmap(QtGui.QPixmap("./imagenes/logo.png"))
         self.lblLogoEmpresa.setObjectName("lblLogoEmpresa")
         self.label_9 = QtWidgets.QLabel(self.centralwidget)
         self.label_9.setGeometry(QtCore.QRect(-320, 0, 881, 81))
@@ -115,7 +115,7 @@ class Ui_MainWindow(object):
 "border-radius:20;\n"
 " ")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../imagenes/UploadIco.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("./imagenes/UploadIco.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.btnSeleccionarArchivo.setIcon(icon)
         self.btnSeleccionarArchivo.setObjectName("btnSeleccionarArchivo")
         self.lblIndicacion1 = QtWidgets.QLabel(self.frame)
@@ -228,7 +228,7 @@ class Ui_MainWindow(object):
 "                border: 1px solid #aaa; \n"
 "")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../imagenes/AddImageIco.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap("./imagenes/AddImageIco.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.btnSeleccionarImagen.setIcon(icon1)
         self.btnSeleccionarImagen.setObjectName("btnSeleccionarImagen")
         self.lblVistaPrevia = QtWidgets.QLabel(self.frame)
@@ -317,7 +317,7 @@ class Ui_MainWindow(object):
 "border-radius:20;\n"
 "")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("../imagenes/SendIco.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon2.addPixmap(QtGui.QPixmap("./imagenes/SendIco.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.btnEnviarMensaje.setIcon(icon2)
         self.btnEnviarMensaje.setIconSize(QtCore.QSize(30, 30))
         self.btnEnviarMensaje.setObjectName("btnEnviarMensaje")
@@ -357,7 +357,7 @@ class Ventana(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.setWindowTitle("Enviar mensajes whatsapp")
-        self.setWindowIcon(QIcon("imagenes/iconoapp.png"))
+        self.setWindowIcon(QIcon("./imagenes/iconoapp.png"))
         self.showMaximized()
 
 if __name__ == "__main__":
