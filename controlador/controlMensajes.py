@@ -1,11 +1,12 @@
 import sys
 import os
 import tkinter as tk
-from PyQt6.QtWidgets import QWidget, QFileDialog, QApplication, QMessageBox, QListView, QAbstractItemView
+from PyQt6.QtWidgets import QWidget, QFileDialog, QApplication, QMessageBox, QAbstractItemView, QDialogButtonBox
 from PyQt6 import QtWidgets, QtGui, QtCore
-from PyQt6.QtGui import QStandardItemModel, QStandardItem, QScreen, QPixmap
+from PyQt6.QtGui import QStandardItemModel, QStandardItem, QScreen, QPixmap, QMouseEvent
 from PyQt6.QtCore import Qt
 from vista.ventana import Ventana
+from vista.vista_previa import VentanaEmergente
 from modelo.manejoMensajes import *
 
 class Controlador(QWidget):
@@ -16,7 +17,8 @@ class Controlador(QWidget):
         # instancio la ventana
         self.app = QtWidgets.QApplication(sys.argv)
         self.vista = Ventana()
-        self.tabla = None
+        self.tabla=None
+        
         #----------------------
         self.modelo=Mensajes()
         
@@ -28,27 +30,53 @@ class Controlador(QWidget):
         self.vista.ui.tblNombreTelefono.setModel(None)
         self.vista.ui.listEncabezados.itemClicked.connect(self.limitar_seleccion_lista)
         self.vista.ui.btnEnviarMensaje.clicked.connect(self.enviarMensaje)
+        self.vista.ui.txtAreaMensaje.mousePressEvent=self.mouse_clic
         self.setModeloTabla()
         
 
-            
+    def mouse_clic(self, event:QMouseEvent):
+        if event.button()==Qt.MouseButton.LeftButton:
+            self.vista.ui.txtAreaMensaje.setText("")
+
     def checkbox_cambiado(self, estado):
         if estado ==2:
             self.vista.ui.btnSeleccionarImagen.setEnabled(True)
+            style = """
+            QPushButton {
+                background-color: rgb(20, 180, 183);
+                border-color: rgb(20, 180, 183);
+                color: rgb(255,255,255);
+
+            }
+        """
+            self.vista.ui.btnSeleccionarImagen.setStyleSheet(style)
+            
         else:
             self.vista.ui.btnSeleccionarImagen.setEnabled(False)
+            self.cambiarAparienciaBotonDeshabilitado()
+            
+
+    def cambiarAparienciaBotonDeshabilitado(self):
+        style = """
+            QPushButton {
+                background-color: #ccc; 
+                color: #888;  
+                border: 1px solid #aaa; 
+            }
+        """
+        self.vista.ui.btnSeleccionarImagen.setStyleSheet(style)
 
     def seleccionarImagen(self):
 
-        imagen, ok=QFileDialog.getOpenFileName(self, "Seleccionar imagen", r"<Default dir>", "Archivos de imágenes (*.jpg *.png)")
+        self.imagen, ok=QFileDialog.getOpenFileName(self, "Seleccionar imagen", r"<Default dir>", "Archivos de imágenes (*.jpg *.png)")
         #imagen es la direccion de la imagen
 
         #si la imagen ha sido seleccionada
-        if imagen:
-            imagen=os.path.relpath(imagen, os.getcwd()) #tome la ruta relativa de la imagen
+        if self.imagen:
+            self.imagen=os.path.relpath(self.imagen, os.getcwd()) #tome la ruta relativa de la imagen
 
             if ok:
-                tamanio_original=QtGui.QPixmap(imagen)
+                tamanio_original=QtGui.QPixmap(self.imagen)
                 ancho_original=tamanio_original.width()
                 alto_original=tamanio_original.height()
 
@@ -91,7 +119,7 @@ class Controlador(QWidget):
 
 
     def setModeloTabla(self):
-        self.tabla = QStandardItemModel()
+        self.tabla=QStandardItemModel()
         self.tabla.setHorizontalHeaderLabels(["Nombre", "Telefono"])
         self.vista.ui.tblNombreTelefono.setModel(self.tabla)
         self.tabla.setRowCount(12)
@@ -103,9 +131,9 @@ class Controlador(QWidget):
         cabecera.setFirstSectionMovable(False)
         header_style = """
             QHeaderView::section {
-                background-color: #ff8b29; /* Color de fondo de la cabecera */
-                color: #ffffff; /* Color del texto de la cabecera */
-                font-weight: bold; /* Texto en negrita */
+                background-color: #14b4b7;  
+                color: #ffffff;  
+                font-weight: bold;  
 
             }
 
@@ -113,8 +141,8 @@ class Controlador(QWidget):
 
         style_sheet = """
         QTableView::item:selected {
-                background-color: #ff8b29; 
-                color: white;
+                background-color: rgba(20,180,183,0.3);
+                color: black;
         }"""
 
         self.vista.ui.tblNombreTelefono.horizontalHeader().setStyleSheet(header_style)
@@ -149,17 +177,51 @@ class Controlador(QWidget):
 
     def enviarMensaje(self):
         #mostrar la vista previa en otra ventana puede ser mejor idea 
-        mensaje = "¿Está seguro de que desea el mensaje a los numeros telefonicos que aparecen en la tabla?"
-        respuesta = QMessageBox.question(self, "Confirmacion", mensaje, QMessageBox.StandardButton.Yes, QMessageBox.StandardButton.No)
+        mensaje = "¿Está seguro de que desea enviar el mensaje a los numeros telefonicos que aparecen en la tabla?"
+        mensaje += "\nMensaje: "+self.vista.ui.txtAreaMensaje.toPlainText()
         
+        #si no se va a enviar una imagen
+        if self.vista.ui.lblImagen.pixmap().isNull():
+            respuesta = QMessageBox.question(self, "Confirmacion", mensaje, QMessageBox.StandardButton.Yes, QMessageBox.StandardButton.No)
+            if self.vista.ui.txtAreaMensaje.toPlainText().strip() and respuesta == 16384:
 
-        if self.vista.ui.txtAreaMensaje.toPlainText().strip() and respuesta == 16384:
-
-            self.modelo.mandarMensaje(self.obtenerSegundaColumna(),self.vista.ui.txtAreaMensaje.toPlainText())
+                self.modelo.mandarMensaje(self.obtenerSegundaColumna(),self.vista.ui.txtAreaMensaje.toPlainText())
+            else:
+                QMessageBox.information(self,"Aviso", "No se enviaron los mensajes") 
 
         else:
-            QMessageBox.information(self,"Aviso", "No se enviaron los mensajes")
 
+            self.appEmergente = QtWidgets.QApplication(sys.argv)
+            self.emergente = VentanaEmergente()
+            self.manejarVentanaEmergente(self.vista.ui.txtAreaMensaje.toPlainText())
+            button_box = self.emergente.ui.buttonBox
+            button_box.accepted.connect(self.aceptar)
+            button_box.rejected.connect(self.cancelar)
+
+    def aceptar(self):
+        self.modelo.mandarImagenConMensaje(self.obtenerSegundaColumna(), self.vista.ui.txtAreaMensaje.toPlainText(), self.imagen)
+    def cancelar(self):
+        QMessageBox.information(self,"Aviso", "No se enviaron los mensajes") 
+
+    def manejarVentanaEmergente(self, mensaje):
+        tamanio_original=QtGui.QPixmap(self.imagen)
+        ancho_original=tamanio_original.width()
+        alto_original=tamanio_original.height()
+
+        #obtengo el tamanio del label que contendra la imagen en la ventana
+        ancho_label=self.emergente.ui.lblImagenVistaPrevia.width() 
+
+        #redimensiono el ancho y largo de la imagen manteniendo las proporciones originales de la misma
+        relacion_aspecto=ancho_label/ancho_original 
+        alto_deseado=int(alto_original*relacion_aspecto)
+    
+        self.emergente.ui.lblImagenVistaPrevia.setMinimumSize(QtCore.QSize(251,291))
+        self.emergente.ui.lblImagenVistaPrevia.setMaximumSize(QtCore.QSize(251,291))
+        #escalo la imagen original al tamanio del label
+        redimensionada=tamanio_original.scaled(ancho_label, alto_deseado, Qt.AspectRatioMode.KeepAspectRatio)
+        self.emergente.ui.lblImagenVistaPrevia.setPixmap(redimensionada)
+        self.emergente.ui.lblMensajeVistaPrevia.setText(mensaje)
+        
     def obtenerSegundaColumna(self):
         segunda_columna = []
         for fila in range(self.tabla.rowCount()):
