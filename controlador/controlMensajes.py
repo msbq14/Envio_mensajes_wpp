@@ -185,7 +185,6 @@ class Controlador(QWidget):
 
     def llenarTabla(self, data):
         
-
         for i in range(len(data)):
             for j in range(len(data[i])):
                 self.tabla.setItem(i,j,QStandardItem(str(data[i][j])))
@@ -215,32 +214,6 @@ class Controlador(QWidget):
                 QMessageBox.information(self,"Aviso", "No se enviaron los mensajes")
             
 
-    def aceptar(self):
-        self.modelo.mandarImagenConMensaje(self.obtenerSegundaColumna(), self.vista.ui.txtAreaMensaje.toPlainText(), self.imagen)
-    def cancelar(self):
-        QMessageBox.information(self,"Aviso", "No se enviaron los mensajes") 
-
-    def manejarVentanaEmergente(self, mensaje):
-        # respuesta = QMessageBox.question(self, "Confirmacion", mensaje, QMessageBox.StandardButton.Yes, QMessageBox.StandardButton.No)
-
-        tamanio_original=QtGui.QPixmap(self.imagen)
-        ancho_original=tamanio_original.width()
-        alto_original=tamanio_original.height()
-
-        #obtengo el tamanio del label que contendra la imagen en la ventana
-        ancho_label=self.emergente.ui.lblImagenVistaPrevia.width() 
-
-        #redimensiono el ancho y largo de la imagen manteniendo las proporciones originales de la misma
-        relacion_aspecto=ancho_label/ancho_original 
-        alto_deseado=int(alto_original*relacion_aspecto)
-    
-        self.emergente.ui.lblImagenVistaPrevia.setMinimumSize(QtCore.QSize(251,291))
-        self.emergente.ui.lblImagenVistaPrevia.setMaximumSize(QtCore.QSize(251,291))
-        #escalo la imagen original al tamanio del label
-        redimensionada=tamanio_original.scaled(ancho_label, alto_deseado, Qt.AspectRatioMode.KeepAspectRatio)
-        self.emergente.ui.lblImagenVistaPrevia.setPixmap(redimensionada)
-        self.emergente.ui.lblMensajeVistaPrevia.setText(mensaje)
-        
     def obtenerSegundaColumna(self):
         segunda_columna = []
         for fila in range(self.tabla.rowCount()):
