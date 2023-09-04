@@ -114,3 +114,72 @@ Time: 13:2
 Phone Number: +5930979140623
 Message: holaaaa
 --------------------
+Date: 3/9/2023
+Time: 22:17
+Phone Number: +5930995489886
+Message: hola
+--------------------
+Date: 3/9/2023
+Time: 22:17
+Phone Number: +5930979140623
+Message: hola
+--------------------
+Date: 3/9/2023
+Time: 22:17
+Phone Number: +5930992866315
+Message: hola
+--------------------
+Date: 3/9/2023
+Time: 22:19
+Phone Number: +5930995489886
+Image: imagenes\fondo_opaco.jpg
+Caption: hola"c
+--------------------
+Date: 3/9/2023
+Time: 22:19
+Phone Number: +5930979140623
+Image: imagenes\fondo_opaco.jpg
+Caption: hola"c
+--------------------
+Date: 3/9/2023
+Time: 22:19
+Phone Number: +5930992866315
+Image: imagenes\fondo_opaco.jpg
+Caption: hola"c
+--------------------
+Date: 3/9/2023
+Time: 22:40
+Phone Number: +5930995489886
+Image: imagenes\iconoapp.png
+Caption: ayuda
+--------------------
+Date: 3/9/2023
+Time: 22:40
+Phone Number: +5930979140623
+Image: imagenes\iconoapp.png
+Caption: ayuda
+--------------------
+Date: 3/9/2023
+Time: 22:40
+Phone Number: +5930992866315
+Image: imagenes\iconoapp.png
+Caption: ayuda
+--------------------
+Date: 3/9/2023
+Time: 22:43
+Phone Number: +5930995489886
+Image: imagenes\iconoapp.png
+Caption: auxilio
+--------------------
+Date: 3/9/2023
+Time: 22:43
+Phone Number: +5930979140623
+Image: imagenes\iconoapp.png
+Caption: auxilio
+--------------------
+Date: 3/9/2023
+Time: 22:44
+Phone Number: +5930992866315
+Image: imagenes\iconoapp.png
+Caption: auxilio
+--------------------

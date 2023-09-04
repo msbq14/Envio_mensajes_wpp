@@ -31,7 +31,8 @@ class Mensajes():
         data_filtrado = data_filtrado[data_filtrado[cabecera2].str.startswith("09") | data_filtrado[cabecera2].str.startswith("'09")].reset_index()
 
         nombres_y_telefonos = data_filtrado[[cabecera1, cabecera2]]
-        nombres_y_telefonos[cabecera2] = nombres_y_telefonos[cabecera2].str.replace("'", "")
+        nombres_y_telefonos.loc[:, cabecera2] = nombres_y_telefonos[cabecera2].str.replace("'", "")
+
         lista_de_listas = nombres_y_telefonos.values.tolist()
         return lista_de_listas
 
@@ -42,5 +43,6 @@ class Mensajes():
 
     def mandarImagenConMensaje(self, numeros_telefonicos, mensaje, imagen):
         for numero in numeros_telefonicos:
-            pywhatkit.sendwhats_image('+593'+str(numero), imagen, mensaje, 15, True)
+            
+            pywhatkit.sendwhats_image('+593'+str(numero), imagen, mensaje, 10, True)
         
