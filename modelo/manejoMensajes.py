@@ -40,10 +40,14 @@ class Mensajes():
 
     def mandarMensaje(self, numeros_telefonicos,mensaje):
         for numero in numeros_telefonicos:
-            pywhatkit.sendwhatmsg_instantly('+593'+str(numero),mensaje, 15, True )
-
+            try:
+                pywhatkit.sendwhatmsg_instantly('+593'+str(numero),mensaje, 15, True )
+            except Exception as e:
+                print(e)
     def mandarImagenConMensaje(self, numeros_telefonicos, mensaje, imagen):
         for numero in numeros_telefonicos:
-            
-            pywhatkit.sendwhats_image('+593'+str(numero), imagen, mensaje, 10, True)
+            try:
+                pywhatkit.sendwhats_image('+593'+str(numero), imagen, mensaje, 22, True)
+            except Exception as e:
+                print(e)
         

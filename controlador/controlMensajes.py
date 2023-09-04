@@ -69,6 +69,7 @@ class Controlador(QWidget):
         else:
             self.vista.ui.btnSeleccionarImagen.setEnabled(False)
             self.cambiarAparienciaBotonDeshabilitado()
+            self.vista.ui.lblImagen.clear()
             
 
     def cambiarAparienciaBotonDeshabilitado(self):
@@ -192,12 +193,12 @@ class Controlador(QWidget):
 
     def enviarMensaje(self):
         #mostrar la vista previa en otra ventana puede ser mejor idea 
-        mensaje = "¿Está seguro de que desea enviar el mensaje a los numeros telefonicos que aparecen en la tabla?"
+        mensaje = "¿Está seguro de que desea enviar el mensaje a los números telefónicos que aparecen en la tabla?"
         mensaje += "\nMensaje: "+self.vista.ui.txtAreaMensaje.toPlainText()
         
         #si no se va a enviar una imagen
-        if self.vista.ui.lblImagen.pixmap().isNull():
-            respuesta = QMessageBox.question(self, "Confirmacion", mensaje, QMessageBox.StandardButton.Yes, QMessageBox.StandardButton.No)
+        if not self.vista.ui.checkBox.isChecked():
+            respuesta = QMessageBox.question(self, "Confirmación", mensaje, QMessageBox.StandardButton.Yes, QMessageBox.StandardButton.No)
             if self.vista.ui.txtAreaMensaje.toPlainText().strip() and respuesta == 16384:
 
                 self.modelo.mandarMensaje(self.obtenerSegundaColumna(),self.vista.ui.txtAreaMensaje.toPlainText())
@@ -205,13 +206,14 @@ class Controlador(QWidget):
                 QMessageBox.information(self,"Aviso", "No se enviaron los mensajes") 
 
         else:
-
-            self.appEmergente = QtWidgets.QApplication(sys.argv)
-            self.emergente = VentanaEmergente()
-            self.manejarVentanaEmergente(self.vista.ui.txtAreaMensaje.toPlainText())
-            button_box = self.emergente.ui.buttonBox
-            button_box.accepted.connect(self.aceptar)
-            button_box.rejected.connect(self.cancelar)
+            mensaje = "¿Está seguro de que desea enviar el mensaje con la imagen a los números telefónicos que aparecen en la tabla?"
+            respuesta = QMessageBox.question(self, "Confirmacion", mensaje, QMessageBox.StandardButton.Yes, QMessageBox.StandardButton.No)
+            
+            if self.vista.ui.txtAreaMensaje.toPlainText().strip() and respuesta == 16384:
+                self.modelo.mandarImagenConMensaje(self.obtenerSegundaColumna(), self.vista.ui.txtAreaMensaje.toPlainText(), self.imagen)
+            else:
+                QMessageBox.information(self,"Aviso", "No se enviaron los mensajes")
+            
 
     def aceptar(self):
         self.modelo.mandarImagenConMensaje(self.obtenerSegundaColumna(), self.vista.ui.txtAreaMensaje.toPlainText(), self.imagen)
@@ -219,6 +221,8 @@ class Controlador(QWidget):
         QMessageBox.information(self,"Aviso", "No se enviaron los mensajes") 
 
     def manejarVentanaEmergente(self, mensaje):
+        # respuesta = QMessageBox.question(self, "Confirmacion", mensaje, QMessageBox.StandardButton.Yes, QMessageBox.StandardButton.No)
+
         tamanio_original=QtGui.QPixmap(self.imagen)
         ancho_original=tamanio_original.width()
         alto_original=tamanio_original.height()
