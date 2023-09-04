@@ -1,1 +1,6 @@
 __pycache__/
+*.rar
+*.spec
+dist/
+build/
+Envio_mensajes_whatsapp/
