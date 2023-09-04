@@ -10,9 +10,9 @@ class Mensajes():
     def obtenerCabeceras(self, ruta_archivo):
         try:
             try:
-                self.df=pd.read_csv(ruta_archivo)
+                self.df=pd.read_csv(ruta_archivo).astype(str)
             except:
-                self.df=pd.read_excel(ruta_archivo)
+                self.df=pd.read_excel(ruta_archivo).astype(str)
 
             cabeceras=self.df.columns.tolist()
             filtradas=[cabecera for cabecera in cabeceras if "Unnamed" not in cabecera]
@@ -27,8 +27,9 @@ class Mensajes():
         print(nombres)
         telefonos=self.df[cabecera2]
         print(telefonos)
-        data_filtrado=self.df.dropna(subset=[cabecera2]).copy() #filtra telefonos vacios con nombres correspondientes
-        data_filtrado = data_filtrado[data_filtrado[cabecera2].str.startswith("09") | data_filtrado[cabecera2].str.startswith("'09")].reset_index()
+
+        data_filtrado=self.df.dropna(subset=[cabecera2]).copy().astype(str) #filtra telefonos vacios con nombres correspondientes
+        data_filtrado = data_filtrado[data_filtrado[cabecera2].str.startswith("09") | data_filtrado[cabecera2].str.startswith("'09") | data_filtrado[cabecera2].str.startswith("9")].reset_index()
 
         nombres_y_telefonos = data_filtrado[[cabecera1, cabecera2]]
         nombres_y_telefonos.loc[:, cabecera2] = nombres_y_telefonos[cabecera2].str.replace("'", "")

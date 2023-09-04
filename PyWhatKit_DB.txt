@@ -183,3 +183,36 @@ Phone Number: +5930992866315
 Image: imagenes\iconoapp.png
 Caption: auxilio
 --------------------
+Date: 3/9/2023
+Time: 23:4
+Phone Number: +593995489886
+Message: cruzar los dedooos
+--------------------
+Date: 3/9/2023
+Time: 23:5
+Phone Number: +593979140623
+Message: cruzar los dedooos
+--------------------
+Date: 3/9/2023
+Time: 23:5
+Phone Number: +593992866315
+Message: cruzar los dedooos
+--------------------
+Date: 3/9/2023
+Time: 23:7
+Phone Number: +593995489886
+Image: ..\..\..\Downloads\marcador-de-posicion.png
+Caption: aaa
+--------------------
+Date: 3/9/2023
+Time: 23:7
+Phone Number: +593979140623
+Image: ..\..\..\Downloads\marcador-de-posicion.png
+Caption: aaa
+--------------------
+Date: 3/9/2023
+Time: 23:8
+Phone Number: +593992866315
+Image: ..\..\..\Downloads\marcador-de-posicion.png
+Caption: aaa
+--------------------
